@@ -1,0 +1,8 @@
+#target info
+uint32 dishwasher_id
+---
+#result info
+uint32 total_dishes_cleaned
+---
+#feadback info
+float32 percent_complete
