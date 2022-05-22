@@ -1,0 +1,21 @@
+#ubuntu18得安装melodic版本的 movit，不需要每个依赖都安装一遍
+sudo apt-get install ros-melodic-moveit
+
+#问题
+#The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia
+
+去掉urdf中的 inertia 相关标签，模型正常显示
+
+#问题
+#[WARN] [1588564677.171522]: The ‘use_gui’ parameter was specified, which is deprecated. We’ll attempt to find and run the GUI, but if this fails you should install the ‘joint_state_publisher_gui’ package instead and run that. This backwards compatibility option will be removed in Noetic.
+#[ERROR] [1581780877.646970]: Could not find the GUI, install the ‘joint_state_publisher_gui’ package
+
+#解决
+#先安装joint_state_publisher_gui
+
+sudo apt-get install ros-kinetic-joint-state-publisher-gui
+
+#再次运行joint_state_publisher节点，会出现下面警告：在这里插入图片描述然后把之前launch文件中的所有joint_state_publisher换成joint_state_publisher_gui
+
+
+<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
